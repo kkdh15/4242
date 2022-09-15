@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dohyunki <dohyunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 16:58:37 by dohyunki          #+#    #+#             */
-/*   Updated: 2022/09/15 14:49:23 by dohyunki         ###   ########.fr       */
+/*   Created: 2022/09/15 15:02:32 by dohyunki          #+#    #+#             */
+/*   Updated: 2022/09/15 18:20:35 by dohyunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_arrlen(char **tab)
+int	ft_arrlen1(char **tab)
 {
 	int	len;
 
@@ -20,49 +20,28 @@ int	ft_arrlen(char **tab)
 	return (len);
 }
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (1)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0' & s2[i] == '\0')
-			break ;
-		i++;
-	}
-	return (0);
-}
-
-void	ft_swap(char **tab)
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	int		i;
 	int		j;
 	char	*tmp;
 	int		len;
 
-	len = ft_arrlen(tab);
+	len = ft_arrlen1(tab);
 	i = 0;
-	while (i < len - 1)
+	while (i < len)
 	{
-		j = i + 1;
-		while (j < len)
+		j = 0;
+		while (j < len - 1)
 		{
-			if (ft_strcmp(tab[i], tab[j]) > 0)
+			if (cmp(tab[j], tab[j + 1]) > 0)
 			{
-				tmp = tab[i];
-				tab[i] = tab[j];
-				tab[j] = tmp;
+				tmp = tab[j];
+				tab[j] = tab[j + 1];
+				tab[j + 1] = tmp;
 			}
 			j++;
 		}
 		i++;
 	}
-}
-
-void	ft_sort_string_tab(char **tab)
-{
-	ft_swap(tab);
 }

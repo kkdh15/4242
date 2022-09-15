@@ -6,7 +6,7 @@
 /*   By: dohyunki <dohyunki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 12:47:15 by dohyunki          #+#    #+#             */
-/*   Updated: 2022/09/13 12:51:06 by dohyunki         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:49:43 by dohyunki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_any(char **tab, int (*f)(char*))
 	int	i;
 
 	i = 0;
-	while (*tab[i])
+	while (tab[i])
 	{
 		if (f(tab[i]) != 0)
 			return (1);
